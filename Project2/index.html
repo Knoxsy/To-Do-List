@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple To-Do List</title>
+    <link rel="stylesheet" href="css/style.css"></link>
+    <style type="text/css"></style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#flip").click(function(){
+        $("#panel").slideToggle("fast");
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Simple To-Do List</h1>
+    </div>
+
+    <div class="content">
+
+      <!--Add New Item Section-->
+      <div class="newTask">Enter new task:<br>
+        <form><input id="newTask" type="text" placeholder="New Task"></input></form>
+      </div>
+
+      <div class="priority">Priority<br>
+        <select id="priority">
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+
+      <div class="submit">
+        <br><button type="submit" onclick="addNewTask()">SUBMIT</button>
+      </div>
+      <!--End New Item Section -->
+
+      <!--To-Do List Content-->
+      <div class="list">
+        <div class="high">
+            <p>High Priority</p>
+            <!--CHECKBOX, DATE ADDED-->
+            <ul id="high">
+            </ul>
+          </div>
+          <div class="medium">
+            <p>Medium Priority</p>
+            <ul id="medium">
+            </ul>
+          </div>
+          <div class="low">
+            <p>Low Priority</p>
+            <ul id="low">
+            </ul>
+          </div>
+          <div>
+            <button type="button">Clear Tasks</button>
+          </div>
+        </form>
+      </div>
+
+    <!--Completed Tasks Content-->
+      <div class="done" id="flip">CLICK TO VIEW COMPLETED TASKS</div>
+      <div id="panel">Item 1</div>
+
+      <script>
+      function addNewTask() {
+        var li = document.createElement("li");
+        var newTask = document.getElementById("newTask").value;
+        var priority = document.getElementById("priority").value;
+        var t = document.createTextNode(newTask);
+        li.appendChild(t);
+        document.getElementById(priority).appendChild(li);
+      }
+      </script>
+
+
+<!--
+      <script>
+        function newElement() {
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+              if (inputValue === '') {
+                alert("You must write something!");
+              } else {
+                document.getElementById("myUL").appendChild(li);
+              }
+              document.getElementById("myInput").value = "";
+
+              var span = document.createElement("SPAN");
+              var txt = document.createTextNode("\u00D7");
+              span.className = "close";
+              span.appendChild(txt);
+              li.appendChild(span);
+
+              for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                  var div = this.parentElement;
+                  div.style.display = "none";
+                }
+              }
+          }
+</script>
+-->
+  </body>
+
+</html>
